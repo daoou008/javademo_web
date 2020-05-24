@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -30,11 +31,21 @@ public class CheckCode extends HttpServlet {
         //2.3 设置图片中的验证码
         String codeOri = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random r = new Random();
+        StringBuilder checkCode = new StringBuilder();
+
         for (int i = 0; i < 4; i++) {
             int charIndex = r.nextInt(codeOri.length());
             char codeEle = codeOri.charAt(charIndex);
             gra.drawString(String.valueOf(codeEle), width / 8 + (width / 4 * i), height / 2);
+            checkCode.append(codeEle);
         }
+
+        HttpSession session = request.getSession();
+
+        if (null != checkCode) {
+            session.setAttribute("checkCode", checkCode.toString());
+        }
+
         //2.4 画干扰线
         gra.setColor(Color.green);
         for (int i = 0; i < 5; i++) {
