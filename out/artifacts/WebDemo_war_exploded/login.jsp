@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: SJ
-  Date: 2020/5/24
-  Time: 17:10
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" errorPage="500.jsp" language="java" %>
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +17,13 @@
             float: left;
         }
     </style>
+    <script>
+        onload = function() {
+            document.getElementById("imgCheckCode").onclick = function () {
+                this.src = "/checkCode?time=" + new Date().getTime();
+            }
+        }
+    </script>
     <title>Login</title>
 </head>
 <body>
@@ -44,7 +44,7 @@
             <label for="inputCheckCode" class="col-sm-2 control-label">验证码</label>
             <div class="col-sm-2">
                 <input type="text" name="checkCode" class="form-control checkCodeWidth" id="inputCheckCode" placeholder="验证码">
-                <img src="/checkCode">
+                <img id="imgCheckCode" src="/checkCode">
             </div>
         </div>
         <div class="form-group">
@@ -52,8 +52,10 @@
                 <button type="submit" class="btn btn-default">登录</button>
             </div>
         </div>
-        <%= request.getAttribute("checkCodeError") != null ? request.getAttribute("checkCodeError"): ""%>
-        <%= request.getAttribute("userError") != null ? request.getAttribute("userError"): ""%>
+        <%--<%= request.getAttribute("checkCodeError") != null ? request.getAttribute("checkCodeError"): ""%>
+        <%= request.getAttribute("userError") != null ? request.getAttribute("userError"): ""%>--%>
+        ${requestScope.checkCodeError}
+        ${requestScope.userError}
     </form>
 </body>
 </html>
