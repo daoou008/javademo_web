@@ -9520,7 +9520,7 @@
             // Extract dataTypes list
             s.dataTypes = ( s.dataType || "*" ).toLowerCase().match( rnothtmlwhite ) || [ "" ];
 
-            // A cross-system.login.domain request is in order when the origin doesn't match the current origin.
+            // A cross-justdemo.code.login.domain request is in order when the origin doesn't match the current origin.
             if ( s.crossDomain == null ) {
                 urlAnchor = document.createElement( "a" );
 
@@ -9977,7 +9977,7 @@
     jQuery.ajaxTransport( function( options ) {
         var callback, errorCallback;
 
-        // Cross system.login.domain only allowed if supported through XMLHttpRequest
+        // Cross justdemo.code.login.domain only allowed if supported through XMLHttpRequest
         if ( support.cors || xhrSupported && !options.crossDomain ) {
             return {
                 send: function( headers, complete ) {
@@ -10005,10 +10005,10 @@
                     }
 
                     // X-Requested-With header
-                    // For cross-system.login.domain requests, seeing as conditions for a preflight are
+                    // For cross-justdemo.code.login.domain requests, seeing as conditions for a preflight are
                     // akin to a jigsaw puzzle, we simply never set it to be sure.
                     // (it can always be set on a per-request basis or even using ajaxSetup)
-                    // For same-system.login.domain requests, won't change header if already provided.
+                    // For same-justdemo.code.login.domain requests, won't change header if already provided.
                     if ( !options.crossDomain && !headers[ "X-Requested-With" ] ) {
                         headers[ "X-Requested-With" ] = "XMLHttpRequest";
                     }
@@ -10155,7 +10155,7 @@
 // Bind script tag hack transport
     jQuery.ajaxTransport( "script", function( s ) {
 
-        // This transport only deals with cross system.login.domain or forced-by-attrs requests
+        // This transport only deals with cross justdemo.code.login.domain or forced-by-attrs requests
         if ( s.crossDomain || s.scriptAttrs ) {
             var script, callback;
             return {
