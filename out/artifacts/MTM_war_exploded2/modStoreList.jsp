@@ -66,10 +66,10 @@
 <div id="div3" class="container">
     <h3>客户可用库存信息</h3>
     <div style="float: left">
-        <form class="form-inline">
+        <form class="form-inline" action="${pageContext.request.contextPath}/modStore" method="post">
             <div class="form-group">
                 <label for="inputCustomerName">客户</label>
-                <input type="text" class="form-control" id="inputCustomerName">
+                <input type="text" name="cusName" value="${cusName}" class="form-control" id="inputCustomerName">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>
@@ -104,17 +104,17 @@
                 <c:if test="${pb.currentPage > 1}">
                     <li>
                 </c:if>
-                    <a href="${pageContext.request.contextPath}/modStore?currentPage=${pb.currentPage - 1}&row=3" aria-label="Previous">
+                    <a href="${pageContext.request.contextPath}/modStore?currentPage=${pb.currentPage - 1}&row=3&cusName=${cusName}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
 
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
                     <c:if test="${pb.currentPage == i}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/modStore?currentPage=${i}&row=3">${i}</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/modStore?currentPage=${i}&row=3&cusName=${cusName}">${i}</a></li>
                     </c:if>
                     <c:if test="${pb.currentPage != i}">
-                        <li><a href="${pageContext.request.contextPath}/modStore?currentPage=${i}&row=3">${i}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/modStore?currentPage=${i}&row=3&cusName=${cusName}">${i}</a></li>
                     </c:if>
                 </c:forEach>
                 <c:if test="${pb.currentPage >= pb.totalPage}">
@@ -123,7 +123,7 @@
                 <c:if test="${pb.currentPage < pb.totalPage}">
                     <li>
                 </c:if>
-                    <a href="${pageContext.request.contextPath}/modStore?currentPage=${pb.currentPage + 1}&row=3" aria-label="Next">
+                    <a href="${pageContext.request.contextPath}/modStore?currentPage=${pb.currentPage + 1}&row=3&cusName=${cusName}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
